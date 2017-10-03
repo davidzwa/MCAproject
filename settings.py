@@ -9,7 +9,7 @@ CONST_NUM_CLUSTERS = ['# ***Clusters***', 1]
 
 # Simulation progression settings
 CONST_SIM_ALTER = [
-			('IssueWidth.0',	[2,8]),
+			('IssueWidth.0',	[2,8], 'skip'),
 			('Alu.0',			[2]),
 			('IssueWidth.0',	[2]),
 			('IssueWidth.0',	[2]),

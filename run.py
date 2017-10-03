@@ -27,6 +27,13 @@ ws1.append(CONST_DATA_NAMES)
 for ALTER_PROPERTY in CONST_SIM_ALTER:
 	strAttribute = ALTER_PROPERTY[0]
 	numVals = ALTER_PROPERTY[1]
+	if len(ALTER_PROPERTY) == 3 and ALTER_PROPERTY[2] == 'skip':
+		new_config = replaceLine(strAttribute, numVals[0], lines)
+		if new_config:
+			print('[' + str(i) + '] SKIP AND SET: [name:' + strAttribute + ', numVal:' + str(numVals[0]) + ' ]')
+			lines = new_config
+		continue
+		
 	for numVal in numVals:
 		i+=1
 		pass_string = 'NO ACTION PERFORMED'
@@ -34,7 +41,7 @@ for ALTER_PROPERTY in CONST_SIM_ALTER:
 		old_lines = lines # backup
 		new_config = replaceLine(strAttribute, numVal, lines)
 		if not new_config:
-			break	# Line error, skip sim
+			continue	# Line error, skip sim
 		else:
 			lines = new_config
 			pass_string = 'CHANGE: [name:' + strAttribute + ', numVal:' + str(numVal) + ' ]'
@@ -62,7 +69,7 @@ for ALTER_PROPERTY in CONST_SIM_ALTER:
 					exec_cycles = findLogLine(CONST_DATA_OUT, log_file)
 					if not exec_cycles:
 						print('Log property ' + CONST_DATA_OUT + ' not found')
-						break
+						continue
 					
 					# Analyze optimal execution cycles value
 					if (optimal_exec_cycles[index] == -1 or exec_cycles < optimal_exec_cycles[index]):
