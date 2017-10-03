@@ -7,14 +7,33 @@ ext = '.mm'
 iter_algs = ['crc','greyscale']
 CONST_NUM_CLUSTERS = ['# ***Clusters***', 1]
 
-# Simulation progression settings
-CONST_SIM_ALTER = [
+# Simulation progression settings - 1 clusters
+CONST_SIM_ALTER = list()
+CONST_SIM_ALTER.append([
 			('IssueWidth.0',	[2,8], 'skip'),
 			('Alu.0',			[2]),
 			('IssueWidth.0',	[2]),
 			('IssueWidth.0',	[2]),
 			#('Alu.0',	[2,4,6,8]),
-			 ]
+			 ])
+
+# Simulation progression settings - 2 clusters
+CONST_SIM_ALTER.append([
+			('IssueWidth.0',	[2,8], 'skip'),
+			('Alu.0',			[2]),
+			('IssueWidth.0',	[2]),
+			('IssueWidth.0',	[2]),
+			#('Alu.0',	[2,4,6,8]),
+			 ])
+
+# Simulation progression settings - 4 clusters
+CONST_SIM_ALTER.append([
+			('IssueWidth.0',	[2,8], 'skip'),
+			('Alu.0',			[2]),
+			('IssueWidth.0',	[2]),
+			('IssueWidth.0',	[2]),
+			#('Alu.0',	[2,4,6,8]),
+			 ])
 
 ### data to be gathered
 CONST_DATA_OUT = "Execution Cycles:"
